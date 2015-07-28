@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">  
+<link href="smartphone/css/style.css" rel='stylesheet' type='text/css' />  
+<link rel="stylesheet" href="css/style.mobile.css" />
+<link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/parse-1.2.13.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/data_bin.js"></script>
+<title></title>
+  <link rel="stylesheet" href="css/first.css">
+<style type="text/css">
+/* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
+html, body {height:100%; margin:0; padding:0;}
+/* Set the position and dimensions of the background image. */
+#page-background {position:fixed; top:0; left:0; width:100%; height:100%;}
+/* Specify the position and layering for the content that needs to appear in front of the background image. Must have a higher z-index value than the background image. Also add some padding to compensate for removing the margin from the 'html' and 'body' tags. */
+#content {position:relative; z-index:1; padding:10px;}
+</style>
+<!-- The above code doesn't work in Internet Explorer 6. To address this, we use a conditional comment to specify an alternative style sheet for IE 6 -->
+<!--[if IE 6]>
+<style type="text/css">
+html {overflow-y:hidden;}
+body {overflow-y:auto;}
+#page-background {position:absolute; z-index:-1;}
+#content {position:static;padding:10px;}
+</style>
+<![endif]-->
+</head>
+<body>
+	<div id="page-background"><img src="img/Landing_Bg.png" width="100%" height="100%" alt="Smile"></div>
+	<div id="content">
+    <img src="img/Landing_title.png" align="middle" width="415" height="333"> 
+    </br>
+    </br>    
+    <a href="reg.html"><img src="img/Landing_NewAccount.png"  alt="send" name="new" id="new_id"
+    /></a>
+	<a href="login.html"><img src="img/Landing_Login.png"  alt="send" name="new" id="new_id"
+ /></a>
+    
+    </div>
+    
+  <script>
+  userId=fix_phone_number(localStorage.getItem("userID"));
+  passwd=localStorage.getItem("passwd");
+  if(userId==null||passwd==null)
+  {
+  	localStorage.setItem("passwd",null);
+  }else {
+//  alert("aaa");
+  		Parse.User.logIn(userId, passwd, {
+  		success: function(user) {
+  		  alert("Login success");
+  		  window.location="index.html";
+  		return false;
+  		 },
+  		  error: function(user, error) {
+  			//  alert("Login Fail");
+//  			  alert("error "+hash);
+				localStorage.setItem("passwd",null);
+  			// The login failed. Check error to see why.
+  		  }
+  		});
+  	
+  }
+  
+  </script>>
+</body>
+</html>

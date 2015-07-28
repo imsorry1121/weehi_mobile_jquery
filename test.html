@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>jQuery Mobile Panel - Hongkiat.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+ <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">  
+  <link href="smartphone/css/style.css" rel='stylesheet' type='text/css' />  
+  <link rel="stylesheet" href="css/style.mobile.css" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <link type="text/css" rel="stylesheet" href="smartphone/css/jquery.mmenu.all.css" /> 
+  <link rel="stylesheet" href="css/app.css"> 
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <!-- hans -->
+  <script src="js/parse-1.2.13.min.js"></script>
+  <link href="css/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />    
+  <script src="js/iscroll.js" type="text/javascript"></script>
+  <script src="js/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+   <body>
+<div data-role="page" class="jqm-demos" data-quicklinks="true">    
+  <div role="main" class="ui-content jqm-content">
+<div data-role="tabs" id="tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#one" data-ajax="false">one</a></li>
+      <li><a href="#two" data-ajax="false">two</a></li>
+      <li><a href="ajax-content-ignore.html" data-ajax="false">three</a></li>
+    </ul>
+  </div>
+  <div id="one" class="ui-body-d ui-content">
+    <h1>First tab contents</h1>
+<a href="test.html" data-rel="dialog" data-transition="pop">Open dialog</a>
+    <a href="#popupLogin" data-rel="popup" data-position-to="window"  data-transition="pop">Sign in</a>
+    <div data-role="popup" id="popupLogin" data-theme="c" class="ui-corner-all">
+<!--     <form> -->
+        <div style="padding:10px 20px;">
+<!--             <h3>Please sign in</h3> -->
+            <label for="un" class="ui-hidden-accessible">Username:</label>
+            <input type="text" name="user" id="un" value="" placeholder="username" data-theme="b">
+            <button class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-btn-icon-left ui-icon-check" onclick="cccc()">Sign in</button>
+        </div>
+
+<script>
+function cccc()
+{
+  // alert("xxxx");
+  $("#popupLogin").popup( "close");
+  // alert();
+}
+</script>
+<!--     </form> -->
+</div>
+  </div>
+  <div id="two">
+   <div data-role="controlgroup" data-type="horizontal" id="RealRadio" >
+    <input type="radio" name="real" id="radio-choice-h-2a" value="Love">
+        <label for="radio-choice-h-2a">情人</label>
+        <input type="radio" name="real" id="first" value="Family">
+        <label for="first">家人</label>
+        <input type="radio" name="real" id="radio-choice-h-2c" value="Friend">
+        <label for="radio-choice-h-2c">朋友</label>
+        <input type="radio" name="real" id="radio-choice-h-2c1" value="Follow">
+        <label for="radio-choice-h-2c1">關注</label>
+
+<!-- <a href="#" data-role="button">情人</a>
+<a href="#" data-role="button">朋友</a>
+<a href="#" data-role="button">家人</a>
+<a href="#" data-role="button">關注</a>
+ -->    </div>
+<script>
+ // $('input:radio[name=real]:nth(1)').attr("checked",true).checkboxradio("refresh");
+$(document).ready(function(){
+$("#RealRadio").find("input[type='radio']").bind("change", function(){
+alert($("input[name=real]:checked").val());
+});
+});
+ // .attr("checked",true).checkboxradio("refresh");
+</script>
+  </div>
+</div>  
+</div>
+</div>
+   </body>
+   <script>
+
+// // alert("aaa");
+//   Parse.initialize("0MJW9p71s1OXaqG4tJdFx7s1vwujM6M9aHDZHhMk","W2QWiaW5BvN1mT6I7JSX0MLbV5ZnyjhhjfIsVPJt");
+// // alert(Parse.User.current());
+// // if( Parse.User.current())
+// // {
+  
+// //      login_user=Parse.User.current();
+// //     $("#User_Name").text(login_user.get("displayName"));
+// //         // alert(JSON.stringify(Parse.User.current()));    
+// //        // alert(Parse.User.current().get("image").url());
+// //      document.getElementById("imageid").src=login_user.get("image").url();
+       
+// //       update_friend_list();
+// // }
+// // else    
+// {  
+//    // alert("ddsds");
+//   Parse.User.logIn("886928897648", "eb1e8bb25a455b80b92bace44030086c", {
+//   success: function(user) {
+//     login_user=user;
+//     alert(user.id);
+      var InstallationID=localStorage.getItem("InstallationID");
+      if(InstallationID!=null)
+      {
+              Parse.Cloud.run('updateParseInstallation', {"UserID":user.id,"InstallationID":InstallationID }, {
+                success: function(result) {
+                  alert("Success");
+                  // result is 'Hello world!'
+                },
+                error: function(error) {
+                  alert(error.message);
+                }
+          });
+      
+      }
+//     Parse.Cloud.run('updateParseInstallation', {"UserID":user.id,"InstallationID":"22cc7908-84a2-4d4b-abaa-7b3f0ca458e2" }, {
+//       success: function(result) {
+//         alert("Success");
+//         // result is 'Hello world!'
+//       },
+//       error: function(error) {
+//         alert(error.message);
+//       }
+// });
+//     // Parse.User.enableRevocableSession();
+//        // alert(Parse.User.Session);
+//   },
+//   error: function(user, error) {
+//     alert("error");
+//     // The login failed. Check error to see why.
+//   }
+//   }); 
+
+
+// }        
+
+</script>

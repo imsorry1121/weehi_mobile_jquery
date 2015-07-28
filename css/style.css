@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'hk-demo';
+  src: url('fonts/hk-demo.eot');
+  src: url('fonts/hk-demo.eot#iefix') format('embedded-opentype'),
+       url('fonts/hk-demo.woff') format('woff'),
+       url('fonts/hk-demo.ttf') format('truetype'),
+       url('fonts/hk-demo.svg#hk-demo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.demo-wrapper {
+	background-color: #000;
+}
+.demo-wrapper .header {
+	text-align: center;
+	font-size: 22px;
+	font-weight: 200;
+	text-shadow: none;
+	line-height: 55px;
+	height: 60px;
+	background-color: #4C92DF;
+	color: white;
+	position: relative;
+	width: 100%;
+}
+.demo-wrapper .header .title { 
+	font-family: 'Georgia';
+}
+.demo-wrapper .header a,
+.demo-wrapper .header a:hover,
+.demo-wrapper .header a:active { 
+	color: #fff !important;
+	text-decoration: none;
+	font: 17px 'hk-demo';
+	background-color: #4C92DF;
+	font-weight: normal;
+}
+.demo-wrapper .open a,
+.demo-wrapper .open a:hover {
+	padding: 9px 15px 7px;
+	background-color: #4C92DF;
+	border-radius: 3px;
+	font-size: 35px;
+}
+.demo-wrapper .header .open { 
+	color: #fff;
+	position: absolute;
+}
+.demo-wrapper .header .open.left {
+	left: 20px;
+	cursor: pointer;
+	/*padding-top: 10px;*/
+	/*margin-top: 10px;*/
+}
+.demo-wrapper .header .open.right {
+	right: 20px;
+	cursor: pointer;
+	/*padding-top: 10px;	*/
+	margin-top: 10px;
+}
+.demo-wrapper .panel {
+	background: #444444;
+	color: white;
+	font-weight: 200;
+	text-shadow: none;
+	/*margin-top: 60px;*/
+	border-radius: 0px;
+}
+.demo-wrapper .panel a {
+	font-weight: 200;
+	text-shadow: none;
+	color: white;
+	padding-left: 30px;
+	display: inline-block;
+	text-decoration: none;
+	position: relative;
+	height: 25px;
+}
+.demo-wrapper .panel ul {
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+}
+.demo-wrapper .panel li {
+	padding: 10px;
+	vertical-align: center;
+	height: 50px;
+}
+.demo-wrapper .panel li img{
+	width: 30px;
+	height: 30px;
+}
+.demo-wrapper .panel .avatar {
+	position: absolute;
+	top: 8px;
+	left: 20px;
+}
+.demo-wrapper .ui-panel-inner {
+	padding: 0;
+}
+.demo-wrapper .panel a:hover {
+	/*background-color: #95A5A6;*/
+}
+.demo-wrapper .panel.right a:before {
+	content: '';
+	display: block;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #2ECC71;
+	right: 20px;
+}
+.demo-wrapper .panel.left a:before {
+	content: '';
+	display: inline-block;
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 15px;
+	left: 20px;
+	font-family: 'hk-demo';
+	text-align: center;
+	font-size: 18px;
+}
+.demo-wrapper .panel.left .newsfeed a:before { 
+	content: '\f09e';
+	background: url(../img/Landing_NewAccount.png) no-repeat scroll;
+}
+.demo-wrapper .panel.left .profile a:before { 
+	content: '👤';
+}
+.demo-wrapper .panel.left .setting a:before { 
+	content: '\2699';
+}
+.demo-wrapper .panel.left .logout a:before { 
+	content: '\e78e';
+}
+.demo-wrapper .panel.left .report a:before { 
+	content: '\f0e0';
+}

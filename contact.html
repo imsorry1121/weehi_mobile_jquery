@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<link href="smartphone/css/style.css" rel='stylesheet' type='text/css' />  
+  <link rel="stylesheet" href="css/style.mobile.css" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <link type="text/css" rel="stylesheet" href="smartphone/css/jquery.mmenu.all.css" />  
+   <link rel="stylesheet" href="css/app.css"> 
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <!-- hans -->
+  <script src="js/parse-1.2.13.min.js"></script>
+  <link href="css/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />    
+  <script src="js/iscroll.js" type="text/javascript"></script>
+  <script src="js/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+   <script type="text/javascript" src="cordova.js"></script>
+    
+    <title>PhoneGap 3 Contacts API demo</title>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header" data-position="fixed" data-theme="b" data-add-back-btn="true">
+            <h1>PhoneGap 3 Contacts API</h1>
+        </div>
+        <div class="wrapper">
+            <ul data-role="listview" data-inset="true" id="contactList">
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h1>All Rights Reserved</h1>
+        </div>
+    </div>
+
+</body>
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+// Create Functions
+function onDeviceReady() {
+	var options = new ContactFindOptions();
+	options.filter="";
+	options.multiple=true;
+	var fields = ["*"];
+	$("#contactList").append("<li><h1>"+"Hans"+"</h1></li>");
+	alert("Occured1");
+	navigator.contacts.find(fields, onSuccess, onError, options);
+	// alert("Some Error Occured2");
+}
+function onSuccess(contacts) {
+	alert(contacts.length);
+ for (var i = 0; i < contacts.length; i++) {
+		if(contacts[i].phoneNumbers!=null)
+ 			{
+ 			  for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
+ 				if(contacts[i].phoneNumbers[j].type=="mobile")
+ 						msg="<li><h1>"+contacts[i].displayName;						
+                               msg=msg+"Type: " + contacts[i].phoneNumbers[j].type + "Value: "  + contacts[i].phoneNumbers[j].value;
+                        }	
+		
+          	msg=msg+"</h1></li>";
+ 			$("#contactList").append(msg);
+ 		}                        
+	}
+ $("#contactList").listview("refresh");
+
+}
+
+function onError()
+{
+	alert("Some Error Occured");
+}
+</script>
+
+</html>

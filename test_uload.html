@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+ <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">  
+  <!--<link rel="stylesheet" href="css/style.mobile.css" />-->
+ 
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <!-- hans -->
+  <link href="mobile/css/style.css" media="all" rel="stylesheet" type="text/css" />
+  <script src="js/parse-1.2.13.min.js"></script>
+    <script src="js/data_bin.js"></script>
+        <script src="js/md5.js"></script>
+  <style type="text/css">
+  body {
+      background: url(img/Landing_Bg.png);
+      background-repeat:repeat-y;
+      background-position:center center;
+      background-attachment:scroll;
+      background-size:100% 100%;
+  }
+  .ui-page {
+      background: transparent;
+  }
+  .ui-content{
+      background: transparent;
+  }
+  </style>      
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+<form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post"> <fieldset> <input type="file" id="fileselect">
+
+<input id="uploadbutton" type="button" value="Upload to Parse"/>
+</fieldset> </form>
+<h3>Image Url:</h3> <div id="url"> <a href="#">http://files.parse.com/...</a> </div>
+
+</body>
+<script>
+  var parse_rest_id = "pIjyfVPyV5vMSG9SLvFvW2EYyM3FL10n0WlF6i1e" //---SET THE GLOBAL API keys
+  Parse.User.logIn("886922273387", "qwerty", {
+  success: function(user) {
+    // Do stuff after successful login.
+    alert("login in");
+  },
+  error: function(user, error) {
+    // The login failed. Check error to see why.
+    alert("login fail");
+  }
+});
+  $(function() {
+
+                var file;
+
+                // Set an event listener on the Choose File field.
+                $('#fileselect').bind("change", function(e) {
+                  var files = e.target.files || e.dataTransfer.files;
+                  // Our file var now holds the selected file
+                  file = files[0];
+                });
+
+                // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+
+
+       $('#uploadbutton').click(function() {
+
+                  var serverUrl = 'https://api.parse.com/1/files/' + file.name;
+                  alert("start upload");
+                  $.ajax({
+                    type: "POST",
+                    beforeSend: function(request) {
+                      request.setRequestHeader("X-Parse-Application-Id", "0MJW9p71s1OXaqG4tJdFx7s1vwujM6M9aHDZHhMk");
+                      request.setRequestHeader("X-Parse-REST-API-Key", "6MA0KEP9rLcJjycCRNBMMSgefwwbKlhPngDite0i");
+                      request.setRequestHeader("Content-Type", file.type);
+                    },
+                    url: serverUrl,
+                    data: file,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        // alert("Upload OK");
+                         var c_user=Parse.User.current();
+                        if(c_user)
+                        {
+                          c_user.set({image: {"name": data.name,"url": data.url,"__type": "File"}})                          
+                          // c_user.set("displayName",sname);
+                          // c_user.set("email",semail);
+                          // c_user.set("hometown",slocate);
+                          // c_user.set("phone",stel);      
+                          c_user.save(null, {
+                            success: function(user) {
+                              alert("更新成功");
+                            }
+                          });
+                        }    
+                    // var myimage = new Parse.Object("User");
+                    // // myimage.set({imagetitle: data.name});
+                    // // myimage.set({imageurl: data.url});
+                    // myimage.set({imagefile: {"name": data.name,"url": data.url,"__type": "File"}});
+                    // myimage.save();
+
+                    document.getElementById("url").innerHTML = '<a href="' + data.url + '">'+ data.url + '</a>';
+
+                    },
+                    error: function(data) {
+                      alert(obj.error);
+                      var obj = jQuery.parseJSON(data);
+                      
+                    }
+                  });
+                });
+
+
+              });
+
+</script>
+</html>

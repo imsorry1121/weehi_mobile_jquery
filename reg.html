@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+ <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">  
+  <!--<link rel="stylesheet" href="css/style.mobile.css" />-->
+ 
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <!-- hans -->
+  <link href="mobile/css/style.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>
+<script type="text/javascript" src="cordova.js"></script>  
+  <script src="js/parse-1.2.13.min.js"></script>
+    <script src="js/data_bin.js"></script>
+        <script src="js/md5.js"></script>
+  <style type="text/css">
+  body {
+      background: url(img/Landing_Bg.png);
+      background-repeat:repeat-y;
+      background-position:center center;
+      background-attachment:scroll;
+      background-size:100% 100%;
+  }
+  .ui-page {
+      background: transparent;
+  }
+  .ui-content{
+      background: transparent;
+  }
+  </style>      
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+<!--<div id="page-background"><img src="img/Landing_Bg.png" width="100%" height="100%" alt="Smile"></div>-->
+<div id="content">
+
+						<div class="sign-in-box">
+							<h2>註冊</h2>					<center><img src="img/ic_group.png" id="smallImage" alt="center" width="160px" height="160px" onclick="getPhoto(pictureSource.PHOTOLIBRARY);"/>	</center>
+							<!-- <form> -->
+								<div class="text-boxs">
+
+									<div data-role="fieldcontain">
+									    <label for="name">暱稱</label>
+									    <input type="text" name="s_nick" id="s_nick" value="" required />
+									</div>		
+									<div data-role="fieldcontain">
+									    <label for="name">密碼</label>
+									    <input type="password" name="s_password" id="s_password" value="" required />
+									</div>			
+									<div data-role="fieldcontain">
+									    <label for="name">E-Mail</label>
+									    <input type="text" name="s_email" id="s_email" value="" required />
+									</div>															<div data-role="fieldcontain">
+									    <label for="name">手機</label>
+									    <input type="text" name="s_phone" id="s_phone" value="" required />
+									</div>							
+		<!-- 							<span class="text-box">
+										<label class="s-user"> </label>
+										<input type="text"  id="phone" placeholder="Username" value="886927980889" required /> 
+										<div class="clear"> </div>
+									</span>
+									<span class="text-box">
+										<label class="s-lock"> </label>
+										<input type="text" placeholder="password" required /> 
+										<div class="clear"> </div>
+									</span> -->
+								</div>
+								<button class="ui-btn" id="buttonx" onclick="xlogin();">Sign in</button>
+
+							<!-- </form> -->
+					
+						</div>
+<!--<a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Basic Popup</a>
+<div data-role="popup" id="popupBasic">
+<p>This is a completely basic popup, no options set.</p>
+</div>-->
+
+</div>
+<a data-rel='external' href="#" onclick="window.open('first.html');"><h1>Home</h1></a>
+</body>
+<script>
+
+
+var str="0922-273387";
+// str=str.replace(/\(|\)|\+|\-/gi,"");
+// if(str.length==10)
+// {
+//   str=str.replace(/09/i,"8869")
+
+// }
+  // alert(fix_phone_number(str));
+
+          var pictureSource;   // picture source
+            var destinationType; // sets the format of returned value
+            
+            // Wait for PhoneGap to connect with the device
+            //
+            document.addEventListener("deviceready",onDeviceReady,false);
+            
+            // PhoneGap is ready to be used!
+            //
+            function onDeviceReady() {
+                pictureSource=navigator.camera.PictureSourceType;
+                destinationType=navigator.camera.DestinationType;
+
+
+            }
+        
+
+
+
+    function phonenumber(inputtxt)  
+    {  
+
+      var phoneno = /^\d{10}$/;  
+      alert(inputtxt);
+      if(inputtxt.match(phoneno))  
+      {  
+      	alert("aa");
+          return true;  
+      }  
+      else  
+      {  
+         alert("Not a valid Phone Number");  
+         return false;  
+      }  
+    }  
+ function xlogin() {
+   // alert("aa");
+//	if(parseFile==null)
+//	{
+//		alert("請選擇照片");
+//		return;
+//
+//	}
+//	
+   var nick=document.getElementById('s_nick').value;
+   if(nick.length==0)
+   {
+   		alert("暱稱請勿空白");
+   		return;
+   }
+   	
+   var password=document.getElementById('s_password').value;   
+   if(password.length==0)
+   {
+   		alert("密碼請勿空白");
+   		return;
+   }
+   if(password.length<6)
+   {
+   		alert("密碼太短");
+   		return;
+   }
+
+   var email=document.getElementById('s_email').value;      
+   if(email.length==0)
+   {
+   		alert(" Email請勿空白");
+   		return;
+   }
+
+   var phone=document.getElementById('s_phone').value;      
+   if(phone.length==0)
+   {
+   		alert(" 手機請勿空白");
+   		return;
+   }
+   	if(phonenumber(document.getElementById('s_phone').value)==false)
+   	{
+   		alert("手機格式不對 請輸入0922xxxxxx的格式");
+   		return
+   	}
+   	var f_phone="886"+phone.substring(1,10);
+
+   	var user = new Parse.User();
+	user.set("username", f_phone);
+	user.set("password", password);
+	user.set("email", email);
+	user.set("displayName", nick);	
+//	user.set("image",parseFile);	
+	user.set("mood","Happy");
+	user.set("status","還沒有時間寫");					 
+	// other fields can be set just like with Parse.Object
+	user.set("phone", f_phone);
+	 
+	user.signUp(null, {
+	  success: function(user) {
+	  localStorage.setItem("userID",f_phone);
+	  localStorage.setItem("passwd",password);
+	  	alert("regest OK");
+	   window.location="index.html";
+	    // Hooray! Let them use the app now.
+	  },
+	  error: function(user, error) {
+	    // Show the error message somewhere and let the user try again.
+	    alert("Error: " + error.code + " " + error.message);
+	  }
+	});
+
+   	// else
+   	// 	alert("No ok");
+	// alert("YC"+document.getElementById('s_phone').value);
+	// alert(calcMD5("YC"+document.getElementById('phone').value));
+	//  hash=calcMD5("YC"+document.getElementById('phone').value);
+	// Parse.User.logIn(document.getElementById('phone').value, hash, {
+ //  success: function(user) {
+	//   alert("Login success");
+	//   window.location="index.html";
+	// return false;
+	//  },
+	//   error: function(user, error) {
+	// 	//  alert("Login Fail");
+	// 	  alert("error "+hash);
+	// 	// The login failed. Check error to see why.
+	//   }
+	// });
+	
+ //   e.stopImmediatePropagation();
+ //    e.preventDefault();;		
+	
+    //Do important stuff....
+    
+    
+
+	
+}
+	parseFile=null;
+	function getPhoto(source) {
+//	alert('aaa');
+	    // Retrieve image file location from specified source
+	    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+	                                destinationType:navigator.camera.DestinationType.DATA_URL,targetWidth: 400,targetHeight: 400 ,
+	                                sourceType: source });
+	                                
+	                                
+	}
+	
+	// Called if something bad happens.
+	// 
+	function onFail(message) {
+	    alert('Failed because: ' + message);
+	}    
+        function onPhotoURISuccess(imageURI) {
+            // Uncomment to view the image file URI
+            // console.log(imageURI);
+            
+            // Get image handle
+            //
+//            var largeImage = document.getElementById('largeImage');
+//            
+//            // Unhide image elements
+//            //
+//            largeImage.style.display = 'block';
+//            
+            // Show the captured photo
+            // The inline CSS rules are used to resize the image
+            //
+
+<!--            largeImage.src = imageURI;-->
+            var smallImage = document.getElementById('smallImage');
+            
+            // Unhide image elements
+            //
+//            smallImage.style.display = 'block';
+            
+            // Show the captured photo
+            // The inline CSS rules are used to resize the image
+            //
+            smallImage.src = "data:image/jpeg;base64," + imageURI;
+           	parseFile = new Parse.File("mypic.jpg",{base64:imageURI});
+//            alert("aaa");
+//            alert(parseFile);
+            parseFile.save().then(function() {
+//                                  alert(parseFile.url());
+//                                  var c_user=Parse.User.current();
+//                                  if(c_user)
+//                                  {
+//<!--                                  c_user.set({image: {"name": data.name,"url": data.url,"__type": "File"}})-->
+//                                        c_user.set("image",parseFile);
+//                                  // c_user.set("displayName",sname);
+//                                  // c_user.set("email",semail);
+//                                  // c_user.set("hometown",slocate);
+//                                  // c_user.set("phone",stel);
+//                                  c_user.save(null, {
+//                                              success: function(user) {
+//                                              alert("更新成功");
+//                                              }
+//                                              });
+//                                  }    
+//
+//<!--                                  var note = new NoteOb();-->
+//<!--                                  note.set("text",noteText);-->
+//<!--                                  note.set("picture",parseFile);-->
+//<!--                                  note.save(null, {-->
+//<!--                                            success:function(ob) {-->
+//<!--                                            $.mobile.changePage("#home");-->
+//<!--                                            }, error:function(e) {-->
+//<!--                                            console.log("Oh crap", e);-->
+//<!--                                            }-->
+//<!--                                            });-->
+//<!--                                  cleanUp();-->
+                                  }, function(error) {
+                                  console.log("Error");
+                                  console.log(error);
+                                  });
+        }
+</script>
+<!--<a data-rel='external' href="#" onclick="window.open('contact.html');"><h1>contatc</h1></a>-->
+</html>

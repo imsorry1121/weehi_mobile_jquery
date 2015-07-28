@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>jQuery Mobile Panel - Hongkiat.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />  
+  <link href="smartphone/css/style.css" rel='stylesheet' type='text/css' />  
+  <link rel="stylesheet" href="css/style.mobile.css" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <link type="text/css" rel="stylesheet" href="smartphone/css/jquery.mmenu.all.css" />  
+  <link rel="stylesheet" href="css/app.css">  
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <!-- hans -->
+  <script src="js/parse-1.2.13.min.js"></script>
+  <script src="js/iscroll.js" type="text/javascript"></script>
+  <script src="js/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+   <body>
+		<div class="demo-wrapper" data-role="page" id="page_friend">
+   <div class="header"> <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="title_label">Friend</span> <span class="open right"></div>
+		    <div class="content" data-role="content">
+          <div class="Myprofile text-center">
+          <bk>
+            </bk> 
+                <div class="Myprofile-head" id="Myprofile-head_friend"> <a href="#"><span><img src="img/mkalalang_120.jpg" width="120" height="80" id="Myprofile-head_img_friend"></span></a> 
+                  <desc id="Myprofile-head_desc_friend">
+                    aaa
+                  </desc>
+                </div>
+              <div class="Myprofile-info" id="Myprofile-head_name_friend">
+              <h2>Hans Wu</h2>
+              </div>
+        </div>
+      </div>
+         
+            <div data-iscroll="" >
+                    <ol data-role="listview" id="list_to_friend_messagex">
+
+                        <!-- <ul> -->
+                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>
+                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>
+                                                                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>
+
+                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>
+                                                                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>
+                          <div class="imy_wish"><a href=index.html rel="external">
+                          來自<name>Hans WU</name>的祝福
+                          <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc>
+                          <datetime>5.55 PM</datetime>              
+                           </a>
+                        </div>                        
+                      <!-- </ul> -->
+                      <!-- <li><a href="#page_about_me"><img src=""><h2>Vicent</h2><p>balabala...................  </p></a></li>" -->
+                  </ol>
+          </div>
+      
+    
+		  <div data-id="footer" data-position="fixed" data-role="footer" data-tap-toggle="false" data-transition="none">
+    <p>
+    <a href="#" class="greenbutton" onclick="do_knock()">贈送禮物</a>
+   </div>
+		  
+
+</body>
+
+  
+  <script>
+  target_id="3eKmlu8srY";
+//  return;
+  // alert("error");   
+  Parse.initialize("0MJW9p71s1OXaqG4tJdFx7s1vwujM6M9aHDZHhMk","W2QWiaW5BvN1mT6I7JSX0MLbV5ZnyjhhjfIsVPJt");
+
+   Parse.User.logIn("886928897648", "eb1e8bb25a455b80b92bace44030086c", {
+  success: function(user) {
+  	  // alert(user.id);
+     // do_knock();
+  	show_friend_detail();
+//  	updateMe();
+
+//alert(JSON.stringify(user));
+//		alert(user.get("image").url());
+  },
+  error: function(user, error) {
+  	alert("fail login");
+  }
+});
+  
+ function do_knock()
+ {
+    var Objknock = Parse.Object.extend("Knock");
+    var Userx = Parse.Object.extend("User");
+    var knock=new Objknock();
+    var UserO=new Userx();
+
+
+    UserO.id=target_id;
+    knock.set("from",Parse.User.current());
+
+    knock.set("to",UserO);
+    knock.set("r_read",false);
+    var groupACL = new Parse.ACL();
+    groupACL.setReadAccess(Parse.User.current(),true);
+    groupACL.setWriteAccess(Parse.User.current(),true);
+    groupACL.setReadAccess(UserO,true);
+    groupACL.setWriteAccess(UserO,true);
+    knock.setACL(groupACL);    
+ 
+    // alert("error"); 
+    knock.save(null, {
+  success: function(kk) {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + kk.id);
+  },
+  error: function(kk, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + kk.message);
+  }
+});
+ } 
+ function show_friend_detail() {
+
+//Show Frined detail    
+  //alert(target_id);
+
+//   alert("page show");
+
+//List knock
+    
+    var Knockx = Parse.Object.extend("Knock");  
+    var Userx = Parse.Object.extend("User");
+    var UserxQ= new Parse.Query(Userx); 
+    // alert("error"); 
+    UserxQ.get(target_id, {
+      success: function(dataxa) {
+        // The object was retrieved successfully.
+        // alert(document.getElementById("Myprofile-head_name_friend").innerHTML);
+        document.getElementById("Myprofile-head_img_friend").src=dataxa.get("image").url();
+       document.getElementById("Myprofile-head_name_friend").innerHTML="<h2>"+dataxa.get("displayName")+"</h2>";       
+       document.getElementById("Myprofile-head_desc_friend").innerHTML=dataxa.get("mood");       
+    
+      },
+      error: function(object, error) {
+        alert("error for get :"+target_id);
+        // The object was not retrieved successfully.
+        // error is a Parse.Error with an error code and message.
+      }
+    });
+           
+           
+    var post = new Userx();
+    post.id = target_id;
+      
+    var query1 = new Parse.Query(Knockx);
+        query1.equalTo("from",post); 
+    var query2 = new Parse.Query(Knockx);        
+      query2.equalTo("to",post);     
+    //alert(target_id);
+    var query = Parse.Query.or(query1, query2);
+    $("#list_to_friend_messagex").empty();
+    query.include("from");
+    query.include("to");
+    query.find({
+      success: function(results) {
+        // alert(results.length);
+        contacts=results;
+      //  alert("Successfully retrieved " + results.length + " scores.");
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) { 
+          var object = results[i];
+              // msg = "<li><a href=\"\#page_about_me\"><img src="+object.get("from").get("image").url()+ "><h2>"+object.get("from").get("displayName")+object.get("to").get("displayName")+"</h2><p>"+object.get("text")+object.updatedAt+"</p></a></li>";
+                msg="<div class=\"imy_wish\"><a href=\"\#\"><name>"+object.get("from").get("displayName")+"</name><desc>"+object.get("text")+"</desc><datetime>"+object.updatedAt.getFullYear()+"</datetime></a></div>";        
+                // msg="";
+          $("#list_to_friend_messagex").append(msg);
+       // $("#User_pic").src=object.get("image");
+    
+       //   alert(object.id + ' - ' + object.get('text'));
+        }
+            $("#list_to_friend_messagex").listview("refresh");
+      //    alert("succesws");
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+    
+    
+
+
+}   
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  </script>
+  </html>

@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Weehi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css"> 
+
+  <link rel="stylesheet" type="text/css" href="smartphone/css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.mobile.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.iscrollview-pull.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/demo.css">
+  <link rel="stylesheet" type="text/css" href="smartphone/css/jquery.mmenu.all.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile.iscrollview.css">
+  <link rel="stylesheet" type="text/css" href="css/style_custom.css">
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile.js"></script>
+  <script src="js/parse-1.2.13.min.js"></script>
+  <script src="js/iscroll.js" type="text/javascript"></script>
+  <script src="js/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+  <script src="js/data_bin.js"></script>
+
+  <body>
+    <!-- page home -->
+    <div class="demo-wrapper" data-role="page" id="page_home">
+      <div class="panel left" data-role="panel" data-position="left" data-display="push" id="panel-01">
+        <div class="toolbar">
+          <div class="col-xs-4">
+            <img class="img-circle img-responsive img-me" id="imageid" src="https://avatars0.githubusercontent.com/u/1728890?v=3&s=460" alt="Profile Picture">
+          </div>
+          <div class="col-xs-8">
+            <h3>Ken Chen</h3>
+          </div>
+        </div>
+        <!-- revise the link here -->
+        <ul>
+          <li><a href="#page_about_me" data-toggle="tab" data-href="page_about_me" title="Home"><img src="img/ic_action_person.png"/> 關於我</a></li>
+          <li><a href="#page_home" data-href="page_care_list" title="Profilex"><img src="img/ic_action_group.png"/>我的朋友</a></li>
+          <li><a href="#page_addcontact" title="Profilex"><img src="img/ic_action_add_person.png"/>邀請朋友</a></li>
+          <li><a href="#page_info" title="Logout"><img src="img/ic_action_settings.png"/>訊息收藏庫</a></li>
+          <li><a href="#page_setting" title="Logout"><img src="img/ic_action_settings.png"/>帳號設定</a></li>
+          <li><a href="#page_setup" title="Logout"><img src="img/ic_action_read.png"/>意見回饋</a></li>            
+          <li><a href="#" onclick="logout()" title="Report"><img src="img/ic_action_undo.png"/>登出</a></li>
+        </ul>
+      </div>
+      <div class="header" data-role="header"> 
+        <span class="open left header-left"><a href="#panel-01"><i class="fa-bars fa-1x"></i></a></span> 
+        <span class="title" id="title_label">關懷圈</span>
+      </div>
+      <div class="content" data-role="content">
+        <div id="page_msg_collection" class="tab-content" >
+          <div data-iscroll="" id="list_carsx_scroll">
+            <div class="iscroll-pulldown">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            </div>
+            <ul class="listview" data-role="listview" id="list_carsx">
+              <li class="row listitem listitem-msgcollection">
+                <div class="col-xs-2 listitem-user2"><img class="img-circle" src="img/ic_send_gift.png"><div class="listitem-time-front">6分鐘前</div></div>
+                <div class="col-xs-10 listitem-content">
+                  <div class="row bg-conversation">
+                    <div class="col-xs-10 listitem-msg">Holaman</div>
+                    <div class="col-xs-1 listitem-remove"><img src="img/ic_trash.png"></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="iscroll-pullup">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+            </div>
+          </div>
+        </div>
+        <div id="page_update_list" class="tab-content"  >
+          <div data-iscroll="" id="list_cars_scroll">        
+            <div class="iscroll-pulldown">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            </div>
+            <ul class="listview" data-role="listview" id="list_carsx">
+              <li class="row listitem listitem-update">
+                <a href="#page_friend" class="">
+                  <div class="col-xs-2 "><img class="img-circle" src="img/ic_send_gift.png"></div>
+                  <div class="col-xs-10 listitem-content">
+                    <div class="row">
+                      <div class="col-xs-9 listitem-name">Holaman</div>
+                      <div class="col-xs-3 listitem-time">5小時前</div>
+                      <div class="col-xs-9 listitem-msg">Yo this is the status.</div>
+                      <div class="col-xs-3 listitem-msgtype"><img src="img/ic_knock_gift.png"></div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+            <div class="iscroll-pullup">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+            </div>
+          </div>
+        </div>
+        <div id="page_care_list" class="tab-content"  >
+          <div data-iscroll="" id="list_cars_scroll">        
+            <div class="iscroll-pulldown">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            </div>
+            <ul class="listview" data-role="listview" id="list_carsx">
+              <li class="row listitem listitem-care">
+                <a href="friend.html">
+                  <div class="col-xs-1 bar bar-blue"></div>
+                  <div class="col-xs-2"><img class="img-circle" src="img/ic_weehi_icon.png"></div>
+                  <div class="col-xs-9 listitem-content">
+                    <div class="row">
+                      <div class="col-xs-6 listitem-name">Holaman<img class="mood" src="img/ic_mood_happy.png"></div>
+                      <div class="col-xs-6 listitem-time">上次時間</div>
+                      <div class="col-xs-12 listitem-status">Yo this is the status.</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+            <div class="iscroll-pullup">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+            </div>
+          </div>
+        </div>
+        <div id="page_about_me" class="tab-content"  >
+          <div class="aboutme-top">
+            <div class="row">
+              <div class="col-xs-5"><img class="img-circle img-me" src="img/ic_weehi_icon.png"></div>
+              <div class="col-xs-7 aboutme-topright">
+                <div class="row aboutme-name">Holaman<img class="mood" src="img/ic_mood_happy.png"></div>
+                <div class="row aboutme-status"><img class="invert" src="img/ic_edit.png">Weehi!微微的嗨！</div>
+                <div class="row aboutme-mood">
+                  <div class="col-xs-3">喜悅</div>
+                  <div class="col-xs-3">生氣</div>
+                  <div class="col-xs-3">傷心</div>
+                  <div class="col-xs-3">美好</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aboutme-down bg-gray">
+            <div data-iscroll="" id="list_cars_scroll">        
+              <div class="iscroll-pulldown">
+                <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+              </div>
+              <ul class="listview">
+                <li class="row listitem listitem-msgcollection">
+                  <div class="col-xs-2 listitem-user2"><img class="img-circle" src="img/ic_send_gift.png"><div class="listitem-time-front">6分鐘前</div></div>
+                  <div class="col-xs-10 listitem-content">
+                    <div class="row bg-conversation">
+                      <div class="col-xs-10 listitem-msg">
+                        <div class="aboutme-msg">This is the content</div>
+                        <div class="aboutme-collect"><img class="collect"src="img/ic_action_favorite_null.png">收藏</div>
+                      </div>
+                      <div class="col-xs-1 aboutme-msgphoto"><img src="img/ic_knock_funny.jpg"></div>
+                    </div>
+
+                  </div>
+                </li>
+              </ul>
+              <div class="iscroll-pullup">
+                <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer" data-tap-toggle="false" data-transition="none" data-role="footer">
+        <div data-role="navbar" >
+          <ul class="row nav nav-tabs">
+            <li class="active col-xs-3" id="msg_collection_btn"><a data-toggle="tab" href="#page_home" data-href="page_msg_collection"><img src="img/ic_tab_favorite_unselected.png"></a></li>
+            <li class="col-xs-3"><a data-toggle="tab" href="#page_home" data-href="page_update_list"><img src="img/ic_tab_update_unselected.png"></a></li>
+            <li class="col-xs-3"><a data-toggle="tab" href="#page_home" data-href="page_care_list"><img src="img/ic_tab_care_unselected.png"></a></li>
+            <li class="col-xs-3" id="about_me_btn"><a data-toggle="tab" href="#page_home" data-href="page_about_me"><img src="img/ic_tab_about_me_unselected.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- page setup -->
+    <div class="demo-wrapper" data-role="page" id="page_setting">
+      <div class="panel left" data-role="panel" data-position="left" data-display="push" id="panel-01">
+        <div class="toolbar">
+          <div class="col-xs-4">
+            <img class="img-circle img-responsive img-me" id="imageid" src="https://avatars0.githubusercontent.com/u/1728890?v=3&s=460" alt="Profile Picture">
+          </div>
+          <div class="col-xs-8">
+            <h3>Ken Chen</h3>
+          </div>
+        </div>
+        <ul>
+          <li><a href="#page_about_me" title="Home"><img src="img/ic_action_person.png"/> 關於我</a></li>
+          <li><a href="#page_home" title="Profilex"><img src="img/ic_action_group.png"/>我的朋友</a></li>
+          <li><a href="#page_addcontact" title="Profilex"><img src="img/ic_action_add_person.png"/>邀請朋友</a></li>
+          <li><a href="#page_info" title="Logout"><img src="img/ic_action_settings.png"/>訊息收藏庫</a></li>
+          <li><a href="#page_setting" title="Logout"><img src="img/ic_action_settings.png"/>帳號設定</a></li>
+          <!-- <li><a href="#page_setup" title="Logout"><img src="img/ic_action_read.png"/>意見回饋</a></li>             -->
+          <li><a href="#" onclick="logout()" title="Report"><img src="img/ic_action_undo.png"/>登出</a></li>
+        </ul>
+      </div>
+      <div class="header" data-role="header"> 
+        <span class="open left header-left"><a href="#panel-01"><i class="fa-bars fa-1x"></i></a></span> 
+        <span class="title" id="title_label">關懷圈</span>
+      </div>
+      <div class="content" data-role="content">
+          <div class="setting-top">
+            <div class="input-group ">
+              <span class="input-group-addon">暱稱</i></span>
+              <input type="text" class="form-control" aria-label="Nickname" value="Name">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">e-mail</i></span>
+              <input type="text" class="form-control" aria-label="Email" value="xxx@gmail.com">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">密碼</i></span>
+              <input type="text" class="form-control" aria-label="Pwd" value="Password">
+            </div>
+          </div>
+          <div class="setting-down">
+            <button type="button" class="btn btn-success btn-lg">確認</button>
+          </div>
+      </div>
+      <div class="footer" data-tap-toggle="false" data-transition="none" data-role="footer">
+        <div data-role="navbar" >
+          <ul class="row nav nav-tabs">
+            <li class="active col-xs-3" id="msg_collection_btn"><a data-toggle="tab" href="#page_home" data-href="tab1"><img src="img/ic_tab_favorite_unselected.png"></a></li>
+            <li class="col-xs-3"><a data-toggle="tab" href="#page_update_list"><img src="img/ic_tab_update_unselected.png"></a></li>
+            <li class="col-xs-3"><a data-toggle="tab" href="#page_care_list"><img src="img/ic_tab_care_unselected.png"></a></li>
+            <li class="col-xs-3" id="about_me_btn"><a data-toggle="tab" href="#page_about_me"><img src="img/ic_tab_about_me_unselected.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="demo-wrapper" data-role="page" id="page_friend"> -->
+    <div class="demo-wrapper" data-role="page" id="page_setup">
+      <div class="header"> <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="title_label">帳號設定</span> <span class="open right"></div>
+
+      <div class="content" data-role="content" margin: 0px; padding: 0px; >
+
+       <div class="isetup">
+        <form id="setup_from" action="#">
+           
+              
+          <center><img src="img/ic_smile.png" id="smallImage" alt="center" width="120px" height="120px" onclick="getPhoto(pictureSource.PHOTOLIBRARY);"/> </center>
+          <table width="80%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="0%">&nbsp;</td>
+              <td width="80%">姓名          <input type="text" name="setup_name" id="setup_name"></td>
+            </tr>
+            <tr>
+              <td><p></p>
+                <p>&nbsp;</p></td>
+                <td>email<input type="text" name="setup_email" id="setup_email"></td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td>密碼<input type="password" name="setup_password" id="setup_password"></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>地區<input type="text" name="setup_locate" id="setup_locate"></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>電話<input type="text" name="setup_tel" id="setup_tel"></td>
+              </tr>
+            </table>
+            <input type="button" value="Save" id="setup_save" onclick="moreFields();">
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="demo-wrapper" data-role="page" id="page_about_me">
+      <div class="header"> <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="title_label">Friend</span> <span class="open right"></div>
+
+      <div class="content" data-role="content" margin: 0px; padding: 0px; >
+
+        <div class="Myprofile text-center">
+          <bk>
+          </bk> 
+
+          <div class="Myprofile-head" id="Myprofile-head_obj"> <a href="#" onclick="popx();"><span><img src="img/ic_smile.png" width="90px" height="90px" id="Myprofile-head_img"></span></a> 
+            <a href="#" onclick="popx();"><desc id="Myprofile-head_desc">新年新希望 恭喜發財
+
+            </desc>  </a>
+          </div>
+
+          <div class="Myprofile-info" id="Myprofile-head_name">
+            <h2>Hans Wu</h2>
+
+          </div>
+        </div>
+        <!-- <img src="img/ic_edit.png" width="30" height="30" id="Myprofile-head_update">      -->
+      </div>
+
+      <div class="content" data-role="content" margin: 0px; padding: 0px; >
+
+        <div class="articles_list">
+          <ul>
+            <li><a href="#" onclick="EventHandler('Happy');" class="red" > <img src="img/ic_smile.png" width="" alt="" /><check id="Happy_ID" ><img src="img/check.png" width="20" hight="20" alt="" /></check></a></li>
+            <li><a href="#" onclick="EventHandler('Wonderful');" class="purple"> <img src="img/ic_laugh.png" alt="" /><check id="Wonderful_ID" ><img src="img/check.png" width="20" hight="20" alt="" /></check></a></li>
+            <li><a href="#" onclick="EventHandler('Angry');" class="yellow"> <img src="img/ic_angry.png" alt="" /><check id="Angry_ID" ><img src="img/check.png" width="20" hight="20" alt="" /></check></a></li>
+            <li><a href="#" onclick="EventHandler('Sad');" class="green"> <img src="img/ic_crying.png" alt="" /><check id="Sad_ID" ><img src="img/check.png" width="20" hight="20" alt="" /></check></a></li>                    
+          </ul>
+        </div>      
+
+      </div>
+      <div data-iscroll="" id="list_to_friend_message_scroll" style='max-height:65%;position: absolute;'>
+        <div class="iscroll-pulldown">
+          <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+        </div>
+        <ol data-role="listview" id="list_to_friend_message">
+          <div class="imy_wish">
+            <a href=index.html rel="external">
+              <R_name>Hans Wu</R_name>
+              <desc>亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容亂七八糟內容</desc></a>
+              <datetime>5.55 PM</datetime>              
+
+            </ol>
+
+            <div class="iscroll-pullup">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+            </div>    
+          </div>
+
+        </div>
+
+
+
+
+        <div class="demo-wrapper" data-role="page" id="page_friend">
+         <div class="header"> <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="friend_title_label">Friend</span> <span class="open right"></div>
+         <div class="content" data-role="content">
+          <div data-iscroll="" id="list_to_friend_messagex_scroll" >
+            <div class="iscroll-pulldown">
+              <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+            </div>    
+            <div class="Myprofile">
+              <bk>
+              </bk> 
+
+              <div class="Myprofile-head" id="Myprofile-head_friend"><div class="Myprofile-mood" id="Myprofile-mood_obj"><img src="img/ic_mood_happy.png" id="Myprofile-head_img_mood" style="width:20px;height:20px;vertical-align:middle">開心</div>  <a href="#"><span><img src="img/ic_smile.png" width="90" height="90" id="Myprofile-head_img_friend"></span></a> 
+              <desc id="Myprofile-head_desc_friend">
+                aaa
+              </desc>
+
+              <rela>
+                <div data-role="controlgroup" data-type="horizontal" id="RealRadio" >
+                    <input type="radio" name="real" id="radio-choice-h-2a" value="Love">
+                        <label for="radio-choice-h-2a">情人</label>
+                        <input type="radio" name="real" id="first" value="Family">
+                        <label for="first">家人</label>
+                        <input type="radio" name="real" id="radio-choice-h-2c" value="Friend">
+                        <label for="radio-choice-h-2c">朋友</label>
+                        <input type="radio" name="real" id="radio-choice-h-2c1" value="Follow">
+                        <label for="radio-choice-h-2c1">關注</label>
+               </div>
+
+
+            </rela>
+          </div>
+          <div class="Myprofile-info" id="Myprofile-head_name_friend">
+            <h2>Hans Wu</h2>
+          </div>
+
+        </div>
+
+        <ul data-role="listview" id="list_to_friend_messagex">
+
+
+
+          <div class='quote'>
+            <img class='round-avatar' src='https://s3.amazonaws.com/uifaces/faces/twitter/stan/48.jpg'>
+            <div class='speech-bubble left'>
+              <p>
+                Stanford R.
+                <span class='time-ago'>
+                  2 minutes ago
+                </span>
+                <img src="img/ic_knock_icebreak.png" align="right" width="70" >
+              </p>
+              <blockquote>
+                "Join me on SaveUp and start being rewarded for saving money!"
+
+              </blockquote>
+
+              &hearts;收藏
+            </div>
+          </div>
+
+
+
+
+        </ul>
+        <div class="iscroll-pullup">
+          <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+        </div>
+      </div>
+
+      <div data-id="footer" data-position="fixed" data-role="footer" data-tap-toggle="false" data-transition="none">  <!--    <a href="#popBasicX1" data-rel="popup">Open Popup</a>  -->
+        <p>
+         <!--    <a href="#" class="greenbutton" onclick="do_knock()">贈送禮物</a> -->
+         <a href="#" class="giftS" > <img src="img/sent.png" width="70px" id="GiftButton"></a>
+       </div>
+       <div data-role="popup"  data-overlay-theme="a"  id="popBasicX1">
+        <p></p>
+        This is a completely basic popup, no options set.
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="demo-wrapper" data-role="page" id="page_info">
+ <div class="header"> <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="friend_title_label">訊息蒐藏庫</span> <span class="open right"></div>
+ <div class="content" data-role="content">
+  <div data-iscroll="" id="list_info_page_scroll" >
+    <div class="iscroll-pulldown">
+      <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+    </div>    
+
+
+    <ul data-role="listview" id="list_info_page">
+
+
+     <!--style='max-height:75%;position: absolute;'-->
+     <div class='quote'>
+      <img class='round-avatar' src='https://s3.amazonaws.com/uifaces/faces/twitter/stan/48.jpg'>
+      <div class='speech-bubble left'>
+        <p>
+          Stanford R.
+          <span class='time-ago'>
+            2 minutes ago
+          </span>
+        </p>
+        <blockquote>
+          "Join me on SaveUp and start being rewarded for saving money!"
+
+        </blockquote>
+
+        &hearts;收藏
+      </div>
+    </div>
+  </ul>
+  <div class="iscroll-pullup">
+    <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="Custom loading text" data-iscroll-pulled-text="Custom pulled text">Custom reset text</span>
+  </div>
+</div>
+
+
+<div data-role="popup"  data-overlay-theme="a"  id="popBasicX2">
+  <p></p>
+  This is a completely basic popup, no options set.
+  <p></p>
+</div>
+</div>
+</div>
+
+<div class="demo-wrapper" data-role="page" id="page_addcontact">
+ <div class="header"   data-role="header" > <span class="open left"><a href="#page_home">&#9664;</a></span> <span class="title" id="friend_title_label">新增朋友</span> <span class="open right"></div>
+ <div class="content" data-role="content">
+  <div data-role="popup" id="popupBasicadd">
+    <p>新增成功<p>
+    </div>
+    <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
+          <div data-role="collapsible"  data-collapsed="false">
+        <h2>聯絡簿</h2><ul data-role="listview"  id="list_phone_c">
+        <div class="contact_add"><headx><img src="img/mambows_120.jpg" width="50px" height="50px"></headx><h2>Name</h2><buttonx><img src="img/ic_friendlist_news.png" width="40px" height="40px" align="right" id="_imgxxx" onclick="addUserCares('object.id','')"/></buttonx></div>
+
+
+      </ul>
+    </div>
+        <div data-role="collapsible">
+          <h2>推薦名單</h2>
+              <ul data-role="listview" data-filter-theme="a" data-divider-theme="b">
+        <div class="contact_add"><headx><img src="img/mambows_120.jpg" width="50px" height="50px"></headx><h2>Name</h2><buttonx><img src="img/ic_friendlist_news.png" width="40px" height="40px" align="right" id="_imgxxx" onclick="addUserCares('object.id','')"/></buttonx></div>
+
+
+              </ul>
+        </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+<script>
+  function logout()
+  {
+
+    if (window.confirm('確定登出?'))
+    {
+      Parse.User.logOut();
+      localStorage.setItem("passwd",null);
+      window.location = 'first.html';
+          // They clicked Yes
+        }
+        else
+        {
+          // They clicked no
+        }
+      }
+    </script>        
+    <script>
+      function loadscreen()
+      {
+  // alert("ss");
+  $.mobile.loading( 'show', {
+    text: '取得資料中.......',
+    textVisible: true,
+    theme: 'b',
+    html: ""
+  });
+
+}
+
+function unloadscreen()
+{
+  $.mobile.loading("hide");
+}
+
+$('#tab1').show().siblings('.tab-content').hide();
+$(document).delegate('.ui-navbar ul li > a', 'click', function() {
+  //search the navbar to deactivate the active button
+  $(this).closest('.ui-navbar').find('a').removeClass('ui-btn-active');
+
+  //change the active tab
+  $(this).addClass('ui-btn-active');
+
+  //hide the siblings
+  // alert('#' + $(this).attr('data-href'));
+  $('#' + $(this).attr('data-href')).show().siblings('.tab-content').hide();
+
+  return false;
+});
+</script>
